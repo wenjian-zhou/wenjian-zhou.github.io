@@ -1,13 +1,13 @@
 # main links
 main:
-  - title: "about"
+  - title: "home"
     url: /
   - title: "posts"
     url: /year-archive/
   - title: "portfolio"
     url: /portfolio/
   - title: "CV"
-    url: /cv/WenjianZhou_CV.pdf
+    url: /assets/cv/WenjianZhou_CV.pdf
   # - title: "Sample Collections"
   #   url: /collection-archive/
   # - title: "Sitemap"
