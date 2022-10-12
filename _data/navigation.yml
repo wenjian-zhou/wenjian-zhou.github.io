@@ -6,6 +6,8 @@ main:
     url: /year-archive/
   - title: "portfolio"
     url: /portfolio/
+  - title: "CV"
+    url: /cv/WenjianZhou_CV.pdf
   # - title: "Sample Collections"
   #   url: /collection-archive/
   # - title: "Sitemap"
