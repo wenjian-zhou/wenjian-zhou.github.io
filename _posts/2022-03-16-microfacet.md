@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: posts
 title: Microfacet Model
 mathjax: true
 ---

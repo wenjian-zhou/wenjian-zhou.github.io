@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: posts
 title: Conclusion of 'A Comprehensive Framework for Rendering Layered Materials' by Jakob et al. SIGGRAPH 2019
 mathjax: true
 ---
