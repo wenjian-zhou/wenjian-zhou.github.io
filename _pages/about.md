@@ -1,6 +1,6 @@
 ---
-permalink: /about/
-title: "about"
+permalink: /
+title: "About"
 ---
 
 Hi
