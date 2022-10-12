@@ -7,7 +7,7 @@ main:
   - title: "portfolio"
     url: /portfolio/
   - title: "CV"
-    url: /CV/WenjianZhou_CV.pdf
+    url: /cv/WenjianZhou_CV.pdf
   # - title: "Sample Collections"
   #   url: /collection-archive/
   # - title: "Sitemap"
