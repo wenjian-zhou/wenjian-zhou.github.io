@@ -276,6 +276,8 @@ compress_html:
   ignore:
     envs: development
 
+include: ["_pages"]
+
 # Defaults
 defaults:
   # _posts
@@ -303,7 +305,7 @@ defaults:
       layout: single
       author_profile: false
       share: true
-      
+
 collections:
   portfolio:
     output: true
