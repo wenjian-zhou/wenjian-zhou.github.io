@@ -1,5 +1,5 @@
 ---
-layout: article
+layout: post
 title: Install Mitsuba on MacOS Big Sur
 ---
 
