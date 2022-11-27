@@ -31,3 +31,18 @@ gallery:
 
 The mandelbrot set visualized.
 
+{% include video id="1pO4VUz-FkuzV8A2XTTigeWNY1mb_tRt_" provider="google-drive" %}
+
+A fractal art using a texture provided by Shadertoy.
+
+{% include video id="1K1WYiZJd75IV6bzkPAEz3X8lYpXAueAR" provider="google-drive" %}
+
+A gem rendered using ray marching and add a little bit of volume effect, but not physically based volume :)
+
+{% include video id="1BuGjN9OWJ_JBrPbiO75H2OPMjn4hw21k" provider="google-drive" %}
+
+The game of life visualized, it's a cellular automation devised by British mathematician John Horton Conway. Its evolution is determined by its initial state and [four simple rules](https://en.wikipedia.org/wiki/Conway%27s_Game_of_Life#Rules).
+
+{% include video id="13wnJMYDs9uZf6rctXhQeIeIGieKEyMeZ" provider="google-drive" %}
+
+A universe scene created from grids and small circles. With SOUND EFFECT!
