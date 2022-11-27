@@ -15,7 +15,7 @@ Its basic quantitie are:
 
 ## Energy
 
-Begin with energy, which is measured in joules ($ J $). A photon at wavelength $$\lambda$$ carries energy
+Begin with energy, which is measured in joules ($ J $). A photon at wavelength $\lambda$ carries energy
 
 
 $$
@@ -23,7 +23,7 @@ Q = \frac{hc}{\lambda}
 $$
 
 
-where $$c$$ is the speed of light, $$ h $$ is Planck's constant, $$ h \approx 6.626 \times 10^{-34} m^2 kg/s $$.
+where $c$ is the speed of light, $ h $ is Planck's constant, $ h \approx 6.626 \times 10^{-34} m^2 kg/s $.
 
 **Energy measures work over some period of time.**
 
@@ -48,11 +48,11 @@ $$
 
 ## Irradiance and Radiant Exitance
 
-the area density of flux arriving at a surface: $$ E = \Phi / A$$
+the area density of flux arriving at a surface: $ E = \Phi / A$
 
 so $E$ is the power per unit area
 
-more generally, $$E(p) = \lim_{\Delta A \to 0} \frac{\Delta \Phi(p)}{\Delta A} = \frac{d \Phi(p)}{dA}$$
+more generally, $E(p) = \lim_{\Delta A \to 0} \frac{\Delta \Phi(p)}{\Delta A} = \frac{d \Phi(p)}{dA}$
 
 integrate this formular:
 
@@ -79,17 +79,17 @@ $$
 
 ![Fig5.8](https://www.pbr-book.org/3ed-2018/Color_and_Radiometry/Planar%20angle.svg)
 
-project the shaded object onto that circle, the arc $$ s $$ will be covered (the same as the angle $$\theta$$)
+project the shaded object onto that circle, the arc $ s $ will be covered (the same as the angle $\theta$)
 
 3D case:
 
 ![Fig5.9](https://www.pbr-book.org/3ed-2018/Color_and_Radiometry/Solid%20angle.svg)
 
-project it onto the sphere, the area will be covered, which is the same as **solid angle**. use $$\omega$$ to denote solid angle (normalized vector)
+project it onto the sphere, the area will be covered, which is the same as **solid angle**. use $\omega$ to denote solid angle (normalized vector)
 
 
 
-consider point $$p$$ as a light source, we can compute the angular density of emitted power, which is called **intensity**, denoted by $I$
+consider point $p$ as a light source, we can compute the angular density of emitted power, which is called **intensity**, denoted by $I$
 
 
 $$
@@ -130,15 +130,15 @@ L = \frac{d\Phi}{d \omega d A^{\bot}}
 $$
 
 
-where $$A^{\bot}$$ is the projected area
+where $A^{\bot}$ is the projected area
 
 ## Incident and Exitant Randiance Functions
 
 ![Fig5.11](https://www.pbr-book.org/3ed-2018/Color_and_Radiometry/Incident%20outgoing%20radiance.svg)
 
-The function that describes the radiance arriving at point $$p$$ is denoted by $$L_{i}(p, \omega)$$, the function that describes the outgoing radiance is denoted by $$L_{o}(p, \omega)$$
+The function that describes the radiance arriving at point $p$ is denoted by $L_{i}(p, \omega)$, the function that describes the outgoing radiance is denoted by $L_{o}(p, \omega)$
 
-**Note that the direction vector $$\omega$$ is oriented to point away from $$p$$**
+**Note that the direction vector $\omega$ is oriented to point away from $p$**
 
 ## Luminance and Photometry
 
@@ -148,7 +148,7 @@ Luminance measures how bright a spectral power distribution appears to a human o
 
 ## Working with Radiometric Integrals
 
-Irradiance at a point $$p$$ with surface normal $$n$$ due to radiance over a set of directions $$\Omega$$ is
+Irradiance at a point $p$ with surface normal $n$ due to radiance over a set of directions $\Omega$ is
 
 
 $$
@@ -203,7 +203,7 @@ x = \sin\theta \cos\phi \\y = \sin\theta \sin\phi \\ z = \cos\theta
 $$
 
 
-thus, $$d A = \sin\theta d\phi d\theta$$
+thus, $d A = \sin\theta d\phi d\theta$
 
 
 $$
@@ -239,9 +239,9 @@ $$
 
 ![Fig5.18](https://www.pbr-book.org/3ed-2018/Color_and_Radiometry/BRDF.svg)
 
-BRDF describes how much incident light along $$\omega_{i}$$ is scattered from the surface in the direction $$\omega_{o}$$ (to the viewer)
+BRDF describes how much incident light along $\omega_{i}$ is scattered from the surface in the direction $\omega_{o}$ (to the viewer)
 
-Take the differential radiance at $$p$$
+Take the differential radiance at $p$
 
 
 $$
@@ -249,7 +249,7 @@ dE(p, \omega_{i}) = L_{i}(p, \omega_{i}) \cos \theta_{i} d \omega_{i}
 $$
 
 
- The differential amount of radiance reflected in the direction $$\omega_{o}$$ is proportional to the diff irradiance
+ The differential amount of radiance reflected in the direction $\omega_{o}$ is proportional to the diff irradiance
 
 
 $$
@@ -268,7 +268,7 @@ $$
 
 #### TWO IMPORTANT QUALITIES
 
-1. Reciprocity: $$f_r (p, \omega_i, \omega_o) = f_r (p, \omega_o, \omega_i)$$
+1. Reciprocity: $f_r (p, \omega_i, \omega_o) = f_r (p, \omega_o, \omega_i)$
 2. Energy Conservation: the total energy reflected is less than or equal to the energy of incident light
 
 
@@ -280,11 +280,11 @@ $$
 
 ### BTDF (bidirectional transmittance distribution function)
 
-denoted by $$f_t(p, \omega_o, \omega_i)$$, but $$\omega_i$$ and $$\omega_o$$ are in opposite hemispheres around $$p$$
+denoted by $f_t(p, \omega_o, \omega_i)$, but $\omega_i$ and $\omega_o$ are in opposite hemispheres around $p$
 
 
 
-For convenience, denote BRDF and BTDF together as BSDF (bidirectional scattering distribution function): $$f(p, \omega_o, \omega_i)$$
+For convenience, denote BRDF and BTDF together as BSDF (bidirectional scattering distribution function): $f(p, \omega_o, \omega_i)$
 
 so we have
 
@@ -297,11 +297,11 @@ $$
 
 ### The BSSRDF
 
-bidirectional scattering surface reflectance distribution function describes scattering from materials that exhibit a significant amout of subsurface light transport, denoted as $$S(p_o, \omega_o, p_i, \omega_i) = \frac{d L_o(p_o, \omega_o)}{d \Phi(p_i, \omega_i)}$$
+bidirectional scattering surface reflectance distribution function describes scattering from materials that exhibit a significant amout of subsurface light transport, denoted as $S(p_o, \omega_o, p_i, \omega_i) = \frac{d L_o(p_o, \omega_o)}{d \Phi(p_i, \omega_i)}$
 
 
 
-$$\Phi(p_i, \omega_i)$$ means that the BSSRDF accounts for  **the hemisphere and the whole surface**
+$\Phi(p_i, \omega_i)$ means that the BSSRDF accounts for  **the hemisphere and the whole surface**
 
 ![Fig5.19](https://www.pbr-book.org/3ed-2018/Color_and_Radiometry/BSSRDF.svg)
 
