@@ -15,7 +15,7 @@ Its basic quantitie are:
 
 ## Energy
 
-Begin with energy, which is measured in joules ($$ J $$). A photon at wavelength $$\lambda$$ carries energy
+Begin with energy, which is measured in joules ($ J $). A photon at wavelength $$\lambda$$ carries energy
 
 
 $$
