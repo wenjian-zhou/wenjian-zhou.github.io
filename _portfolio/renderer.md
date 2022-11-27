@@ -1,6 +1,6 @@
 ---
-title: "Shadertoy Tryout!"
-excerpt: "Shadertoy study and creation"
+title: "A physically based renderer"
+excerpt: "Rendering techniques study and implementation"
 header:
   image: /assets/images/water_caustic.png
   teaser: assets/images/water_caustic.png
