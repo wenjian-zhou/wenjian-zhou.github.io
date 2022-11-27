@@ -10,7 +10,7 @@ In this section, the author showes how the *projected area* of the microsurface 
 
 ## Measuring Radiance on a Surface
 
-The integral form of the outgoing radiance $L(\omega_o, \mathcal{M})$ of a given surface is:
+The integral form of the outgoing radiance $$L(\omega_o, \mathcal{M})$$ of a given surface is:
 
 $$
 L(\omega_o, \mathcal{M}) = \frac{\int_{\mathcal{M}}\mathrm{projected \  area}(p_m)L(\omega_o, p_m)d p_m}{\int_{\mathcal{M}}\mathrm{projected \ area}(p_m)d p_m} \tag{1}
@@ -22,9 +22,9 @@ $$
 
 The author here relates integrals over the microsurface to integrals over the sphere:
 
-*The Distribution of Normals*, $D(\omega) = \int_{\mathcal{M}}\delta_{\omega}(\omega_m(p_m))d p_m$, the unit is $(m^2 / sr)$. It tells us how much area we can see from direction $\omega$.
+*The Distribution of Normals*, $$D(\omega) = \int_{\mathcal{M}}\delta_{\omega}(\omega_m(p_m))d p_m$$, the unit is $$(m^2 / sr)$$. It tells us how much area we can see from direction $$\omega$$.
 
-So integrating $D$ by the upper-hemispherical space gives the area of the microsurface:
+So integrating $$D$$ by the upper-hemispherical space gives the area of the microsurface:
 
 
 $$
@@ -35,7 +35,7 @@ $$
 
 The projected area of the geometric surface onto the outgoing direction is the projected area of the *visible* microsurface.
 
-At first the author uses a *spatial masking function* $G_1$ to define the projected area of the microsurface:
+At first the author uses a *spatial masking function* $$G_1$$ to define the projected area of the microsurface:
 
 $$
 \mathrm{projected \ area} = \int_{\Omega}G_1(\omega_o, p_m)\langle \omega_o, \omega_m(p_m) \rangle d p_m \tag{3}
@@ -46,17 +46,17 @@ $$
 \mathrm{projected \ area} = \int_{\Omega}G_1(\omega_o, \omega_m)\langle \omega_o, \omega_m \rangle D(\omega_m) d\omega_m \tag{4}
 $$
 
->   $D(\omega_m)$ returns the differential area oriented to direction $\omega_m$, the clamped dot product ($\langle \omega_o, \omega_m \rangle$) projects the differential area to direciton $\omega_o$, and then times $G_1$ to get the fraction of visible area.
+>   $$D(\omega_m)$$ returns the differential area oriented to direction $$\omega_m$$, the clamped dot product ($$\langle \omega_o, \omega_m \rangle$$) projects the differential area to direciton $$\omega_o$$, and then times $$G_1$$ to get the fraction of visible area.
 
 ## Constraint on the Masking Function
 
-By convention the geometric area is 1 $m^2$, so equation (3) can be written as
+By convention the geometric area is 1 $$m^2$$, so equation (3) can be written as
 
 $$
 \cos{\theta_o} * 1 m^2 = \int_{\Omega}G_1(\omega_o, \omega_m)\langle \omega_o, \omega_m \rangle D(\omega_m) d\omega_m \tag{5}
 $$
 
-An intuitive way to think about $D$ is that it's like a histogram, describing the *proportion* of each normal on the microsurface. But it doesn't provide information on how the normals are organized, so we need a *microsurface profile*, which describes the shape of the microsurface, to determine the exact $G_1$.
+An intuitive way to think about $$D$$ is that it's like a histogram, describing the *proportion* of each normal on the microsurface. But it doesn't provide information on how the normals are organized, so we need a *microsurface profile*, which describes the shape of the microsurface, to determine the exact $$G_1$$.
 
 # Microfacet-Based BRDFs
 
@@ -70,7 +70,7 @@ $$
 D_{\omega_o}(\omega_m) = \frac{G_1(\omega_o, \omega_m)\langle \omega_o, \omega_m \rangle D(\omega_m)}{\cos{\theta_o}} \tag{6}
 $$
 
->  $\cos{\theta_o}$ is the normalization factor
+>  $$\cos{\theta_o}$$ is the normalization factor
 
 We will use it as a weighting function to average radiances:
 
@@ -80,7 +80,7 @@ $$
 
 ## Construction of the BRDF
 
-The radiance $L(\omega_o, \omega_m)$ of each microfacet can be expressed by the micro-BRDF $\rho_{\mathcal{M}}(\omega_o, \omega_i, \omega_m)$:
+The radiance $$L(\omega_o, \omega_m)$$ of each microfacet can be expressed by the micro-BRDF $$\rho_{\mathcal{M}}(\omega_o, \omega_i, \omega_m)$$:
 
 
 $$
@@ -120,7 +120,7 @@ $$
 $$
 
 
-But this equation only describes single scattering in microsurface, multiple bounces have to be removed, it is achieved by introducing a *masking-shadowing function*  $G_2$
+But this equation only describes single scattering in microsurface, multiple bounces have to be removed, it is achieved by introducing a *masking-shadowing function*  $$G_2$$
 
 
 $$
@@ -148,7 +148,7 @@ $$
 $$
 
 
-the delta function $\delta_{\omega_h}(\omega_m)$ allows a replacement at $\omega_m = \omega_h$, and after doing some cancellation:
+the delta function $$\delta_{\omega_h}(\omega_m)$$ allows a replacement at $$\omega_m = \omega_h$$, and after doing some cancellation:
 
 
 $$
@@ -160,7 +160,7 @@ This is the equation for specular microfacet-based BRDFs
 
 ## Construction of the BRDF with diffuse microfacets
 
-Substitute $\rho_{\mathcal M} = \frac{1}{\pi}$ into equation(11) we will get the result. 
+Substitute $$\rho_{\mathcal M} = \frac{1}{\pi}$$ into equation(11) we will get the result. 
 
 ## The BRDF Normalization Test
 
@@ -255,7 +255,7 @@ The masking probability is invariant to configuration stretching when all of the
 
 ## The Distribution of Slopes
 
-If the microsurface is a heightfield, the distribution of heights is often denoted $P^{1}(h)$. The slopes of the microsurface are the gradients of the heights: $(x_{\tilde{m}}, y_{\tilde{m}}) = \nabla h$, the distribution of the slopes is denoted $P^{22}(x_{\tilde{m}}, y_{\tilde{m}})$.
+If the microsurface is a heightfield, the distribution of heights is often denoted $$P^{1}(h)$$. The slopes of the microsurface are the gradients of the heights: $$(x_{\tilde{m}}, y_{\tilde{m}}) = \nabla h$$, the distribution of the slopes is denoted $$P^{22}(x_{\tilde{m}}, y_{\tilde{m}})$$.
 
 The distribution of normals is constructed from it:
 
@@ -263,17 +263,17 @@ $$
 D(\omega_m) = \frac{P^{22}(x_{\tilde{m}}, y_{\tilde{m}})}{\cos^4{\theta_m}}
 $$
 
-When roughness must be explicit, we use $P^{22}(x_{\tilde{m}}, y_{\tilde{m}}, \alpha)$.
+When roughness must be explicit, we use $$P^{22}(x_{\tilde{m}}, y_{\tilde{m}}, \alpha)$$.
 
 ## Isotropic Shape-Invariant Distributions of Slopes
 
-Several isotropic parametric distributions of slopes depend on a roughness parameter $\alpha$. In this case, the distribution of slopes depends on the ratio $\frac{\tan{\theta_m}}{\alpha}$.
+Several isotropic parametric distributions of slopes depend on a roughness parameter $$\alpha$$. In this case, the distribution of slopes depends on the ratio $$\frac{\tan{\theta_m}}{\alpha}$$.
 
 $$
 P^{22}(x_{\tilde{m}}, y_{\tilde{m}}, \alpha) = \frac{1}{\alpha^2}f(\frac{\sqrt{x^2_{\tilde{m}} + y^2_{\tilde{m}}}}{\alpha}) = \frac{1}{\alpha^2}f(\frac{\tan{\theta_m}}{\alpha})
 $$
 
-where $f$ is a 1D function that defines the shape of the distribution.
+where $$f$$ is a 1D function that defines the shape of the distribution.
 
 ## Anisotropic Shape-Invariant Distributions of Slopes
 
@@ -316,7 +316,7 @@ The author suggests us to use this form in practice, it's more accurate than the
 
 ## Direction-Correlated Masking and Shadowing
 
-Masking and shadowing are strongly correlated when the outgoing and incident directions are close. When $\omega_o = \omega_i$, microfacets are visible from both direction $\omega_o$ and $\omega_i$. In this case, the shadowing should be removed from the BRDF. This is known as the "hotspot effect": when the view and light directions are parallel, shadows disappear.
+Masking and shadowing are strongly correlated when the outgoing and incident directions are close. When $$\omega_o = \omega_i$$, microfacets are visible from both direction $$\omega_o$$ and $$\omega_i$$. In this case, the shadowing should be removed from the BRDF. This is known as the "hotspot effect": when the view and light directions are parallel, shadows disappear.
 
 Ashikhmin et al. [2000] account for directional correlation by blending the separable form of Equation(98) with the case where both directions are fully correlated:
 
@@ -324,11 +324,11 @@ $$
 G_2(\omega_o, \omega_i, \omega_m) = \lambda(\phi)G_1(\omega_o, \omega_m)G_1(\omega_i, \omega_m) + (1 - \lambda(\phi))\min{(G_1(\omega_o, \omega_m),G_1(\omega_i, \omega_m))}
 $$
 
-where $\lambda(\phi)$ is an empirical factor similar to Ginneken et al.'s.
+where $$\lambda(\phi)$$ is an empirical factor similar to Ginneken et al.'s.
 
 ## Height-Direction-Correlated Masking and Shadowing
 
-The directional correlation between masking and shadowing can be modeled by incorporating a directional correlation factor $\lambda$ into the height-correlated form:
+The directional correlation between masking and shadowing can be modeled by incorporating a directional correlation factor $$\lambda$$ into the height-correlated form:
 
 $$
 G_2(\omega_o, \omega_i, \omega_m) = \frac{\chi^{+}(\omega_o \cdot \omega_m)\chi^{+}(\omega_i \cdot \omega_m)}{1 + \max (\Lambda(\omega_o), \Lambda(\omega_i)) + \lambda(\omega_o, \omega_i) \min (\Lambda(\omega_o), \Lambda(\omega_i))}

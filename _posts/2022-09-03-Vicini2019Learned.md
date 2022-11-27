@@ -4,4 +4,3 @@ title: Conclusion of 'A Learned Shape-Adaptive Subsurface Scattering Model' by V
 mathjax: true
 ---
 
-# Problem
