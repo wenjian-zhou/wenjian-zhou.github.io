@@ -2,8 +2,8 @@
 title: "Minecraft Architectures"
 excerpt: "My experiences in Minecraft"
 header:
-  image: /assets/images/mc/mc1.png
-  teaser: assets/images/mc/mc1.png
+  image: /assets/images/mc/mc4.png
+  teaser: assets/images/mc/mc4.png
 sidebar:
   - title: "Role"
     #image: http://placehold.it/350x250
@@ -65,4 +65,4 @@ gallery:
 
 This is a gallery recording my experiences with my friends in Minecraft. We've made a lot of architectures!
 
-{% include gallery id="gallery" layout="half" caption="Some showcases :)" %}
+{% include gallery id="gallery" layout=" " caption="Some showcases :)" %}
