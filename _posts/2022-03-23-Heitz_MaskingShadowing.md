@@ -1,6 +1,6 @@
 ---
 layout: posts
-title: Conclusion of 'Understanding the Masking-Shadowing Function in Microfacet-Based BRDFs' by Eric Heitz
+title: Understanding the Masking-Shadowing Function in Microfacet-Based BRDFs
 mathjax: true
 ---
 

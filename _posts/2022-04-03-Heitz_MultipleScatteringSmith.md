@@ -1,6 +1,6 @@
 ---
 layout: posts
-title: Conclusion of 'Multiple-Scattering Microfacet BSDFs with the Smith Model' by Heitz et al. SIGGRAPH 2016
+title: Multiple-Scattering Microfacet BSDFs with the Smith Model
 mathjax: true
 ---
 
