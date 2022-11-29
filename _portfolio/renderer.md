@@ -1,5 +1,5 @@
 ---
-title: "A physically based renderer"
+title: "Physically Based Renderer"
 excerpt: "Rendering techniques study and implementation"
 header:
   image: /assets/images/water_caustic.png
