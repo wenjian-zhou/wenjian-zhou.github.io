@@ -60,6 +60,21 @@ gallery:
   - url: /assets/images/mc/mc19.png
     image_path: assets/images/mc/mc19.png
     alt: "placeholder image 16"
+  - url: /assets/images/mc/mc20.png
+    image_path: assets/images/mc/mc20.png
+    alt: "placeholder image 17"
+  - url: /assets/images/mc/mc21.png
+    image_path: assets/images/mc/mc21.png
+    alt: "placeholder image 18"
+  - url: /assets/images/mc/mc22.png
+    image_path: assets/images/mc/mc22.png
+    alt: "placeholder image 19"
+  - url: /assets/images/mc/mc23.png
+    image_path: assets/images/mc/mc23.png
+    alt: "placeholder image 20"
+  - url: /assets/images/mc/mc24.png
+    image_path: assets/images/mc/mc24.png
+    alt: "placeholder image 21"
 
 ---
 
