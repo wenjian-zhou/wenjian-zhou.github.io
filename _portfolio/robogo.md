@@ -1,6 +1,6 @@
 ---
-title: "Shadertoy Tryout!"
-excerpt: "Shadertoy study and creation"
+title: "Robogo"
+excerpt: "Robogo game demo"
 header:
   image: /assets/images/robogo_main.png
   teaser: assets/images/robogo_main.png
