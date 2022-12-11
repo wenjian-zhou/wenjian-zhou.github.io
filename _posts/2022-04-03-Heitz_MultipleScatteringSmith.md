@@ -6,12 +6,27 @@ mathjax: true
 
 # Problem
 
-Modeling multiple scattering in microfacet theory is considered an important open problem. Because a non-negligible portion of the energy leaving rough surfaces is due to paths that bounce multiple times. But no physically based method was derived before.
+Compensate the missing energy due to multiple scattering on microfacet model. Because when roughness becomes higher, the traditional microfacet model becomes darker.
+
+# Previous Work Limitations
+
+* Not physically-based multiple scattering method, mostly approximate compensation.
+* Not simulating the multiple scattering process.
+* Some works in physics focus on the albedo with consideration of multiple scattering, but no full BSDF derived.
 
 # Insight
 
-The insight is that the microfacet theory for surfaces with the Smith model can be derived as a special case of the *microflake theory* for volumes, with additional constraints to transform the volume into a surface.
+The microfacet model for surfaces with the Smith model can be derived as a special case of the *microflake model* for volumes, with additional constraints to transform the volume into a surface. So we can compute using Monte Carlo estimator.
 
 # Method
 
-The whole process of multiple scattering in this paper is like path tracing. First, use the microflake theory to derive a 3d probability space of microfacets, then track the heights of the microfacets, like we track specific points on geometries after ray intersects them. Then we sample the outgoing direction using surface-like phase functions. Track next height...until we have a sample that the ray leaves the microsurface.
+* Intersection with the microsurface by tracking the heights of the multiple intersections.
+* Phase functions which are similar to generic microfacet BSDFs.
+* With intersections and phase functions known, random walks on the microsurface can be deduced, which is similar to path tracing.
+* The multiple-scattering BSDF is the expectation of the random walk.
+
+# Limitations
+
+* Stochastic evaluation introduces additional bias.
+* Rendering cost increase as the method is generally doing path tracing.
+* Not suited for real-time rendering.
