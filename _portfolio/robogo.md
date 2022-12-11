@@ -2,8 +2,8 @@
 title: "Robogo"
 excerpt: "Robogo game demo"
 header:
-  image: /assets/images/robogo_main.png
-  teaser: assets/images/robogo_main.png
+  image: /assets/images/robogo/robogo_main.png
+  teaser: assets/images/robogo/robogo_main.png
 sidebar:
   - title: "Role"
     #image: http://placehold.it/350x250

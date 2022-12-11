@@ -4,6 +4,8 @@ title: Multiple-Scattering Microfacet BSDFs with the Smith Model
 mathjax: true
 ---
 
+{% include figure image_path="/assets/images/multiplescatteringSmith/difference.png" alt="figure 1" caption="The difference between single scattering and single + multiple scattering." %}
+
 # Problem
 
 Compensate the missing energy due to multiple scattering on microfacet model. Because when roughness becomes higher, the traditional microfacet model becomes darker.
@@ -24,6 +26,8 @@ The microfacet model for surfaces with the Smith model can be derived as a speci
 * Phase functions which are similar to generic microfacet BSDFs.
 * With intersections and phase functions known, random walks on the microsurface can be deduced, which is similar to path tracing.
 * The multiple-scattering BSDF is the expectation of the random walk.
+
+{% include figure image_path="/assets/images/multiplescatteringSmith/randomwalk.png" alt="figure 2" caption="The random walk process." %}
 
 # Limitations
 

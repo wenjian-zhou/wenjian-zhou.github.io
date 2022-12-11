@@ -2,8 +2,8 @@
 title: "Shadertoy Tryout!"
 excerpt: "Shadertoy study and creation"
 header:
-  image: /assets/images/smileyface.png
-  teaser: assets/images/smileyface.png
+  image: /assets/images/shadertoy/smileyface.png
+  teaser: assets/images/shadertoy/smileyface.png
 sidebar:
   - title: "Role"
     #image: http://placehold.it/350x250
@@ -12,8 +12,8 @@ sidebar:
   #- title: "Responsibilities"
     #text: "Reuters try PR stupid commenters should isn't a business model"
 gallery:
-  - url: /assets/images/smileyface.png
-    image_path: assets/images/smileyface.png
+  - url: /assets/images/shadertoy/smileyface.png
+    image_path: assets/images/shadertoy/smileyface.png
     alt: "placeholder image 1"
   #- url: /assets/images/unsplash-gallery-image-2.jpg
   #  image_path: assets/images/unsplash-gallery-image-2-th.jpg

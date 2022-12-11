@@ -2,8 +2,8 @@
 title: "Physically Based Renderer"
 excerpt: "Rendering techniques study and implementation"
 header:
-  image: /assets/images/water_caustic.png
-  teaser: assets/images/water_caustic.png
+  image: /assets/images/renderer/water_caustic.png
+  teaser: assets/images/renderer/water_caustic.png
 sidebar:
   - title: "Role"
     #image: http://placehold.it/350x250
@@ -12,17 +12,17 @@ sidebar:
   #- title: "Responsibilities"
     #text: "Reuters try PR stupid commenters should isn't a business model"
 gallery:
-  - url: /assets/images/water_caustic.png
-    image_path: assets/images/water_caustic.png
+  - url: /assets/images/renderer/water_caustic.png
+    image_path: assets/images/renderer/water_caustic.png
     alt: "placeholder image 1"
-  - url: /assets/images/volume_caustic.png
-    image_path: assets/images/volume_caustic.png
+  - url: /assets/images/renderer/volume_caustic.png
+    image_path: assets/images/renderer/volume_caustic.png
     alt: "placeholder image 2"
-  - url: /assets/images/sssdragon.png
-    image_path: assets/images/sssdragon.png
+  - url: /assets/images/renderer/sssdragon.png
+    image_path: assets/images/renderer/sssdragon.png
     alt: "placeholder image 3"
-  - url: /assets/images/dragon.png
-    image_path: assets/images/dragon.png
+  - url: /assets/images/renderer/dragon.png
+    image_path: assets/images/renderer/dragon.png
     alt: "placeholder image 4"
 ---
 

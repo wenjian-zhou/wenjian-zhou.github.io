@@ -2,8 +2,8 @@
 title: "Taichi Simulations"
 excerpt: "Taichi Lang study"
 header:
-  image: /assets/images/taichi_logo.png
-  teaser: assets/images/taichi_logo.png
+  image: /assets/images/taichi/taichi_logo.png
+  teaser: assets/images/taichi/taichi_logo.png
 sidebar:
   #- title: "Role"
     #image: http://placehold.it/350x250
