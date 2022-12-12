@@ -5,10 +5,10 @@ header:
   image: /assets/images/renderer/water_caustic.png
   teaser: assets/images/renderer/water_caustic.png
 sidebar:
-  - title: "Role"
+  #- title: "Role"
     #image: http://placehold.it/350x250
     #image_alt: "logo"
-    text: "Developer"
+    #text: "Developer"
   #- title: "Responsibilities"
     #text: "Reuters try PR stupid commenters should isn't a business model"
 gallery:
