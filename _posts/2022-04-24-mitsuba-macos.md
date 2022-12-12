@@ -120,14 +120,6 @@ $ source setpath.sh
 
 Now you can start rendering with Mitsuba!
 
-If you have any question, please email me:
-
-```
-wjchou2931@gmail.com
-```
-
-Wenjian Zhou
-
 ## Reference
 
 * https://github.com/ShilinC/Mitsuba_Install_MacOS
