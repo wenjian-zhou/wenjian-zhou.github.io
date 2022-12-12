@@ -80,4 +80,4 @@ gallery:
 
 This is a gallery recording my experiences with my friends in Minecraft. We've made a lot of architectures!
 
-{% include gallery id="gallery" layout=" " caption="Some showcases :)" %}
+{% include gallery id="gallery" layout="half" caption="Some showcases :)" %}
