@@ -36,7 +36,7 @@ gallery2:
     alt: "placeholder image 7"
 ---
 
-When I was a sophomore, I took a lesson named "Sketch Basis". Due to COVID-19, we had to stay at home and took the lesson online, but fortunately it was awesome, the lecturer not only taught us how to do sketching but also introduced the sketch history and some funny stories behind sketch, we had a lot of fun. 
+When I was a sophomore, I took a lesson named "Sketch Basis". Due to COVID-19, we had to stay at home and took the lesson online, but fortunately it was awesome, the lecturer not only taught us how to do sketching but also introduced the sketch history and some funny stories behind sketches, we had a lot of fun. 
 
 Below is my final homework:
 
