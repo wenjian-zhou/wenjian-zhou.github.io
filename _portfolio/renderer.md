@@ -38,7 +38,7 @@ gallery2:
 Features:
 * Integrators: path tracing and volumetric path tracing.
 * Materials: matte, glass, metal, plastic, microfacet model.
-* Implemented [Multiple-Scattering Microfacet BSDFs with the Smith Model](https://eheitzresearch.wordpress.com/240-2/), below is the comparison with classic microfacet model.
+* Reproduced [Multiple-Scattering Microfacet BSDFs with the Smith Model](https://eheitzresearch.wordpress.com/240-2/), below is the comparison with classic microfacet model.
 
 {% include gallery id="gallery2" layout="half" caption="Left: microfacet model, Right: Heitz's multiple scattering model" %}
 
