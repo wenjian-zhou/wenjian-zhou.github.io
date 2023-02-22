@@ -1,5 +1,5 @@
 ---
-title: "Shadertoy Tryout!"
+title: "Shadertoy Animations"
 excerpt: "Shadertoy study and creation"
 header:
   image: /assets/images/shadertoy/smileyface.png
