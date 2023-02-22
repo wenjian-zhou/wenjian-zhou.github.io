@@ -1,0 +1,15 @@
+---
+title: "Implementations of CG papers"
+excerpt: ""
+header:
+  image: /assets/images/renderer/water_caustic.png
+  teaser: assets/images/renderer/water_caustic.png
+sidebar:
+gallery1:
+  - url: /assets/images/renderer/lte-orb-single.png
+    image_path: assets/images/renderer/lte-orb-single.png
+    alt: "placeholder image 1"
+  - url: /assets/images/renderer/lte-orb-multi.png
+    image_path: assets/images/renderer/lte-orb-multi.png
+    alt: "placeholder image 2"
+---
