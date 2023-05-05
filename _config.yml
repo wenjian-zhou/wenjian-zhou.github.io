@@ -105,8 +105,8 @@ analytics:
 # Site Author
 author:
   name             : "Wenjian Zhou"
-  avatar           : "/assets/images/logo.png"
-  bio              : "Graphics is Awesome!"
+  avatar           : ""
+  bio              : ""
   location         : 
   email            : "wjchou2931@gmail.com"
   links:
