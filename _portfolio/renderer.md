@@ -33,7 +33,7 @@ gallery2:
     alt: "placeholder image 2"
 ---
 
-[This](https://github.com/wenjianzhou2931/Renderer) physically based renderer was developed when I was reading [Physically Based Rendering: From Theory To Implementation](https://pbr-book.org/) for self-study purpose. It doesn't have any user interface yet, all the scenes must be set using code. I'll add user interface in the future.
+[This](https://github.com/wenjianzhou2931/Renderer) physically based renderer was developed when I was reading [Physically Based Rendering: From Theory To Implementation](https://pbr-book.org/) for self-study purpose.
 
 Features:
 * Integrators: path tracing and volumetric path tracing.
