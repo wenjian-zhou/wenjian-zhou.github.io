@@ -30,4 +30,4 @@ Subsurface scattering can be represent by a set of latent variables, which can c
 
 {% include figure image_path="/assets/images/learnedBSSRDF/polynomial.png" alt="figure 2" caption="The polynomial that approximates local geometry, because outgoing positions are often placed around the incident positions." %}
 
-# Limitations
+to be continued...
