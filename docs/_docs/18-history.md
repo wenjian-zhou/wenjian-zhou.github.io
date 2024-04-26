@@ -1,5 +1,20 @@
-# Changelog
+---
+title: History
+classes: wide
+permalink: "/docs/history/"
+excerpt: Change log of enhancements and bug fixes made to the theme.
+sidebar:
+  nav: docs
+last_modified_at: '2024-04-26T00:45:40+08:00'
+toc: false
+---
 
+<!--
+  Sourced from CHANGELOG.md
+  See Rakefile `task :changelog` for details
+-->
+
+{% raw %}
 ## Unreleased
 
 ### Bug Fixes
@@ -1658,3 +1673,4 @@
 - Google Analytics, Google Authorship, webmaster verifies, and Twitter card meta are now optional.
 
 ## [1.0.1](https://github.com/mmistakes/minimal-mistakes/releases/tag/v1.0.1)
+{% endraw %}
