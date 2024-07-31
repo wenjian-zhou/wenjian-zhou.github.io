@@ -1,4 +1,4 @@
 User-agent: *
 Disallow:
 
-Sitemap: https://wenjian-zhou.github.io//sitemap.xml
+Sitemap: https://wenjian-zhou.github.io/sitemap.xml
