@@ -1,12 +1,10 @@
 {
   "basics": {
     "name": "Wenjian Zhou",
-    "label": "Student",
-    "image": "",
     "email": "wenjian.zhou01@gmail.com",
     "phone": "(385) 461-3520",
     "url": "https://wenjian-zhou.github.io/",
-    "summary": "MS student at the University of Utah working on Computer Graphics",
+    "summary": "MS student at the University of Utah working on rendering",
     "location": {
       "address": "455 S 700 E",
       "postalCode": "UT 84102",
