@@ -4,10 +4,10 @@ title: about
 permalink: /
 # subtitle: <a href='#'>Affiliations</a>. Address. Contacts. Moto. Etc.
 
-# profile:
-  # align: right
-  # image: prof_pic.jpg
-  # image_circular: false # crops the image to make it circular
+profile:
+  align: right
+  image: profile_pic.jpg
+  image_circular: false # crops the image to make it circular
   # more_info: >
   #   <p>455 S 700 E</p>
   #   <p>Salt Lake City, Utah 84102</p>
