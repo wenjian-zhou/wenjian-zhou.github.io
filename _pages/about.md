@@ -17,4 +17,4 @@ selected_papers: true # includes a list of papers marked as "selected={true}"
 social: true # includes social icons at the bottom of the page
 ---
 
-I'm learning directx 12.
+I do computer graphics and I'm now a graphics engineer at Booming Tech.
