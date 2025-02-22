@@ -17,4 +17,4 @@ selected_papers: true # includes a list of papers marked as "selected={true}"
 social: true # includes social icons at the bottom of the page
 ---
 
-I do computer graphics and I'm now a graphics engineer at Booming Tech.
+I'm a graphics engineer at Booming Tech. Before that, I obtained my master's degree in computer science at University of Utah and my bachelor's degree at Guangdong University of Technology. I was fortunate to be a research intern at Nankai University, advised by [Prof. Beibei Wang](https://wangningbei.github.io/).
