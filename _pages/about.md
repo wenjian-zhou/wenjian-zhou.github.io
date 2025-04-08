@@ -17,4 +17,4 @@ selected_papers: true # includes a list of papers marked as "selected={true}"
 social: true # includes social icons at the bottom of the page
 ---
 
-I'm a graphics engineer at Booming Tech. Before that, I was a master student at the University of Utah but dropped the school. I was fortunate to be a research intern at Nankai University studying microfacet theory and related problems, advised by [Prof. Beibei Wang](https://wangningbei.github.io/) and a research assistant studying ReSTIR while I was in Utah.
+I'm a graphics engineer at Booming Tech. Before that, I was a master student at the University of Utah. I was fortunate to be a research intern at Nankai University studying microfacet theory and related problems, advised by [Prof. Beibei Wang](https://wangningbei.github.io/).
