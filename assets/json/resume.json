@@ -68,7 +68,7 @@
     {
       "name": "CUDA-based ReSTIR DI",
       "summary": "A simple ReSTIR DI implementation demo based on CUDA and OpenGL. It's simple enough to verify and the code is easy to read.",
-      "highlights": ["ReSTIR"],
+      "highlights": ["ReSTIR", "Importance Resampling", "CUDA", "OpenGL"],
       "startDate": "2024-01-10",
       "endDate": "2024-05-25",
       "url": "https://github.com/wenjian-zhou/ReSTIR-DI-with-CUDA"
@@ -76,7 +76,7 @@
     {
       "name": "Tiny-NeRF",
       "summary": "A coursework project which is based on NeRF, we implemented a tiny version of NeRF using PyTorch as the project.",
-      "highlights": ["NeRF"],
+      "highlights": ["NeRF", "Python"],
       "startDate": "2024-01-10",
       "endDate": "2024-05-25",
       "url": ""
@@ -84,7 +84,7 @@
     {
       "name": "Physically-based Renderer",
       "summary": "A physically-based renderer that simulates the interaction of light with surfaces and materials. It supports path tracing and volumetric path tracing on various BSDFs.",
-      "highlights": ["Physically-based Rendering"],
+      "highlights": ["Physically-based Rendering", "Path Tracing", "Volumetric Path Tracing", "Microfacet Theory", "Importance Sampling", "C++"],
       "startDate": "2021-09-01",
       "endDate": "2022-01-28",
       "url": "https://github.com/wenjian-zhou/Renderer"
