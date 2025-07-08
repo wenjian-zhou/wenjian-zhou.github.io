@@ -7,7 +7,7 @@ tags: rendering microfacet math
 categories: rendering
 ---
 
-In this article, I'm going to talk about the physical assumption in microfacet theory and how we can derive the distribution of normals(D) and masking function(G) under this assumption, based on the paper: ["Understanding the masking-shadowing function in microfacet-based BRDFs."](https://jcgt.org/published/0003/02/03/). Also, I will include some explanations to help you understand the equations and (potentially) have a deeper understanding of microfacet theory. 
+In this article, I'm going to introduce the physical assumption in microfacet theory and how we can derive the distribution of normals(D) and masking function(G) under this assumption, based on the paper: ["Understanding the masking-shadowing function in microfacet-based BRDFs."](https://jcgt.org/published/0003/02/03/). Also, I will include some explanations to help you understand the equations and (potentially) have a deeper understanding of microfacet theory. 
 
 Since this article is about a "deeper" understanding, you should be familiar with microfacet BRDFs before you read this article.
 

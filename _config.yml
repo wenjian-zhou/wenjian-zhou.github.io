@@ -302,8 +302,8 @@ jekyll-archives:
     tag: "/blog/tag/:name/"
     category: "/blog/category/:name/"
 
-display_tags: ["microfacet", "rendering", "math", "code"] # these tags will be displayed on the front page of your blog
-display_categories: ["rendering"] # these categories will be displayed on the front page of your blog
+display_tags: ["rendering", "graphics", "math"] # these tags will be displayed on the front page of your blog
+display_categories: ["BlogPosts", "StudyNotes"] # these categories will be displayed on the front page of your blog
 
 # -----------------------------------------------------------------------------
 # Jekyll Scholar
