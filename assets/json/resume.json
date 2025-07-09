@@ -26,7 +26,7 @@
       "position": "Rendering Engineer",
       "url": "https://www.boomingtech.com/en/",
       "startDate": "2025-02-10",
-      "summary": "Working on real-time rendering techniques. Implemented Brent Burley's subsurface scattering model in in-house engine."
+      "summary": "Working on real-time rendering techniques. Implemented Brent Burley's subsurface scattering model in in-house engine, an efficient translucency volume lighting GPU particle rendering algorithm. Currently working on ray tracing infra and algorithms."
     },
     {
       "name": "University of Utah",
