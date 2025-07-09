@@ -7,7 +7,7 @@ tags: graphics DX12
 categories: StudyNotes
 ---
 
-# Initialting raytracing
+## Initialting raytracing
 
 1. Set pipline state containing raytracing shaders using `SetPipelineState()`.
 2. Invoke raytracing by `DispatchRays()` just like rasterization and compute are invoked by `Draw()` and `Dispatch()`.
@@ -15,11 +15,11 @@ categories: StudyNotes
    * adds support for GPU initiated `DispatchRays()` via `ExecuteIndirect()`.
    * adds support for a variant of raytracing that can be invoked from any shader stage(<span style="color:red">*What???*</span>).
 
-# Ray generation shaders
+## Ray generation shaders
 
 `DispatchRays()` invokes threads of ray generation shaders, and each of them knows it's location in the "grid", and can generate rays via `TraceRay()`.
 
-# Rays
+## Rays
 
 Which includes: origin, direction, and parametric interval `(TMin, TMax)`, positions along the ray is `origin + T * direction`.
 
@@ -27,11 +27,11 @@ A ray is visible to the *caller* of `TraceRay()`, it comes with a user defined p
 
 `TMin` never changes over the lifetime of a ray, the system reduces `TMax` to reflect the closest intersection.
 
-# Raytracing output
+## Raytracing output
 
 Shaders output results such as color samples for an image, manually through UAVs.
 
-# Ray-geometry interaction diagram
+## Ray-geometry interaction diagram
 
 <div class="row mt-3">
     <div class="col-sm mt-3 mt-md-0">
@@ -39,7 +39,7 @@ Shaders output results such as color samples for an image, manually through UAVs
     </div>
 </div>
 
-# Geometry and acceleration structures
+## Geometry and acceleration structures
 
 Geometry in a scene is described as a system using two levels of acceleration structures: **Bottom-level acceleration structures(B-LAS)** consist of a set of geometries that are building blocks for a scene, while **Top-level acceleration structures(T-LAS)** represents a set of instances of B-LAS structures.
 
@@ -52,19 +52,19 @@ A BLAS can only contain a single geometry type。
 
 Given a set of BLAS, the application defines a set of instances which points to a BLAS structure and includes information for specializing the instance, like matrix transform and a user defined InstanceID. Then this set of instances are used to generate TLAS into GPU memory.
 
-# Acceleration structure updates
+## Acceleration structure updates
 
 BLAS only allows vertex positions to be updated. TLAS is more flexible.
 
-# Built-in ray-triangle intersection - triangle mesh geometry
+## Built-in ray-triangle intersection - triangle mesh geometry
 
 Uses built-in intersection for triangles.
 
-# Intersection shaders - procedural primitive geometry
+## Intersection shaders - procedural primitive geometry
 
 An alternative representation for geometry in a BLAS which uses procedural primitives.
 
-# Any hit shaders
+## Any hit shaders
 
 Can be defined to run whenever a ray intersects a geometry instance.
 
@@ -78,7 +78,7 @@ Any hit shaders can:
 
 When accepts a hit, the `T` value becomes the new `TMax`. It can't trace new ray.
 
-# Closest hit shaders
+## Closest hit shaders
 
 Can:
 
@@ -90,14 +90,14 @@ A typical use would be to evaluate the color of a surface and either contribute 
 
 If both any-hit and closest-hit shader types are defined for the geometry instance at the closest hit's `T` value, the any-hit shader will always run before the closest hit shader.
 
-# Miss shaders
+## Miss shaders
 
 For rays that do not intersect any geometry. Can:
 
 1. modify ray payload
 2. generate additional rays
 
-# Hit groups
+## Hit groups
 
 A hit group is one or more shaders consisting of:
 
@@ -107,7 +107,7 @@ A hit group is one or more shaders consisting of:
 
 Individual geometries in a given instance each refer to a hit group, or a hit group is bind to a geometry (<span style="color:yellow">*at least this is what I think*</span>).
 
-# TraceRay control flow
+## TraceRay control flow
 
 <div class="row mt-3">
     <div class="col-sm mt-3 mt-md-0">
@@ -115,3 +115,41 @@ Individual geometries in a given instance each refer to a hit group, or a hit gr
     </div>
 </div>
 
+## Instance masking
+
+<span style="color:red">*will finish this part when I understand it*</span>
+
+## Callable shaders
+
+Defined through *shader table*, implementations are expected to schedule callable shaders for execution separately from the calling shader.
+
+## Resouce binding
+
+### Local root signatures vs global root signatures
+
+* *local root signature*, enables each shader to have unique arguments.
+* *global root signature*, whose arguments are shared across all raytracing shaders and compute PSOs on CommandLists, set via `SetComputeRootSignature()`
+
+If any local root signature makes a sampler definition such as `s0`, all local root signatures that define `s0` must have the same definition.
+
+## Shader identifier
+
+A shader identifier identified one of the raytracing shaders: ray gen, hit group, miss, callable. It can be thought of as *a pointer to a shader*.
+
+For separate raytracing pipelines or collections of code, the same shader may not return the same identifier depending on the implementation.
+
+## Shader record
+
+```
+shader record = {shader identifier, local root arguments for the shader}
+```
+
+A shader record refers to a region of memory owned by the application in the above layout.
+
+## Shader tables
+
+```
+shader table = {shader record A}, {shader record B}, ...
+```
+
+A shader table is a set of shader records.
