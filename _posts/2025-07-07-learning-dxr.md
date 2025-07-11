@@ -105,7 +105,7 @@ A hit group is one or more shaders consisting of:
 * 0 or 1 any hit shader
 * 0 or 1 closest hit shader
 
-Individual geometries in a given instance each refer to a hit group, or a hit group is bind to a geometry (<span style="color:yellow">*at least this is what I think*</span>).
+Individual geometries in a given instance each refer to a hit group.
 
 ## TraceRay control flow
 
@@ -153,3 +153,19 @@ shader table = {shader record A}, {shader record B}, ...
 ```
 
 A shader table is a set of shader records.
+
+
+---
+
+## Example in Microsoft DirectX Raytracing Sample
+
+Before Rendering:
+
+1. OnInit
+   * Create device resources
+   * Scene initialization: setup primitives, materials, cameras, lights...
+   * Create resources that depend on the device
+     * Any auxilary device resources
+     * Create raytracing interfaces: device, commandlist
+     * Create root signatures for shaders: global root signature, local root signature (<span style="color:orange">how to design local root signature? make separate LHS or a shared LHS? Looks like it can be used with "bindless"</span>)
+     * TO BE CONTINUED
