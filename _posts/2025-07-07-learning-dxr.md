@@ -2,7 +2,7 @@
 layout: post
 title: Learning DXR
 date: 2025-07-07 16:30:00
-description: My studying notes of DXR
+description: My studying notes of DXR.
 tags: graphics DX12
 categories: StudyNotes
 ---
