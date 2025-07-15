@@ -168,4 +168,16 @@ Before Rendering:
      * Any auxilary device resources
      * Create raytracing interfaces: device, commandlist
      * Create root signatures for shaders: global root signature, local root signature (<span style="color:orange">how to design local root signature? make separate LHS or a shared LHS? Looks like it can be used with "bindless"</span>)
-     * TO BE CONTINUED
+     * Create raytracing PSO: DXIL library, hit group types, shader config, local/global root signature, pipeline config
+     * Create descriptor heap
+     * Build geometry
+     * Build TLAS and BLAS
+     * Create constant buffer
+     * Create AABB primitive attribute buffers(<span style="color:orange">not neccessary</span>)
+     * Create shader table(ray gen, miss, hit group...)
+     * Create output resources(for storing raytracing result)
+2. When rendering
+   * Do any update you want: animate camera, animate geometries...
+   * Do raytracing(dispatch)
+3. After rendering
+   * Clean up neccessary things
