@@ -23,23 +23,23 @@ LEA(load effective address):
 * But actually you can use numbers instead of addresses in this instruction.
 
 Unary Operations:
-* INC D: increment 1
-* DEC D: decrement 1
-* NEG D: negate
-* NOT D: complement
+* `INC D`: increment 1
+* `DEC D`: decrement 1
+* `NEG D`: negate
+* `NOT D`: complement
 
 Binary Operations:
-* ADD  S, D:  D <- D + S
-* SUB  S, D:  D <- D - S
-* IMUL S, D:  D <- D * S
-* XOR  S, D:  D <- D ^ S (exclusive-or)
-* OR   S, D:  D <- D | S (or)
-* AND  S, D:  D <- D & S
+* `ADD  S, D`:  D <- D + S
+* `SUB  S, D`:  D <- D - S
+* `IMUL S, D`:  D <- D * S
+* `XOR  S, D`:  D <- D ^ S (exclusive-or)
+* `OR   S, D`:  D <- D | S (or)
+* `AND  S, D`:  D <- D & S
 
 Shift Operations:
-* SAL k, D: D <- D << k
-* SHL k, D: same as SAL
-* SAR k, D: D <- D >> k, arithmetic right shift
-* SHR k, D: logical right shift
+* `SAL k, D`: D <- D << k
+* `SHL k, D`: same as SAL
+* `SAR k, D`: D <- D >> k, arithmetic right shift
+* `SHR k, D`: logical right shift
 
 Other Operations: ask AI.
