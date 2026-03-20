@@ -17,4 +17,4 @@ selected_papers: true # includes a list of papers marked as "selected={true}"
 social: true # includes social icons at the bottom of the page
 ---
 
-I'm a graphics engineer at [Booming Tech](https://www.boomingtech.com/en/). Before that, I completed some graduate coursework at the University of Utah. And I was fortunate to be a research intern at Nankai University advised by [Prof. Beibei Wang](https://wangningbei.github.io/) during my undergrad, my primary research interest back then was microfacet theory and its multiple scattering.
+I'm a graphics engineer at [Booming Tech](https://www.boomingtech.com/en/). Before that, I completed some graduate coursework at the University of Utah. And I was a research intern at Nankai University advised by [Prof. Beibei Wang](https://wangningbei.github.io/) during my undergrad. I now do rendering features in our company's in-house engine.
