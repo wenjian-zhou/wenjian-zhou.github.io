@@ -2,7 +2,7 @@
 layout: post
 title: Derive RIS from scratch
 date: 2026-03-20 17:00:00
-description: 
+description: derive RIS from scratch
 tags: rendering math
 categories: rendering
 ---
