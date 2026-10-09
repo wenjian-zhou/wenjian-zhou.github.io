@@ -1,10 +1,10 @@
 ---
-layout: post
 title: A Survey of Real-Time GI Techniques with Game Case Studies
 date: 2026-10-08 12:00:00
 description: an overview of real-time global illumination techniques and the games that ship them
-tags: rendering GI
-categories: rendering
+tags: [rendering, GI]
+categories: [rendering]
+math: true
 ---
 
 ## Introduction
@@ -27,14 +27,8 @@ Each category in turn has two storage options: **baking onto surfaces, and bakin
 
 Representative methods of the first category are the Lightmap (baked on surfaces) and the Volumetric Lightmap (baked into points placed in world space). The points-in-space approach usually stores an SH vector at each point and interpolates samples at runtime, which is equivalent to storing an expression of the lighting at a given point in space. This pattern of storing sample points in space is sometimes called an Irradiance Volume, or Probes; naming conventions vary, but the underlying idea is the same: sample points distributed in space. How exactly those points are placed (manually by artists / automatically / with an octree) is an implementation choice.
 
-<div class="row mt-3">
-    <div class="col-sm mt-3 mt-md-0">
-        {% include figure.liquid loading="eager" path="assets/img/realtime-gi-survey/1.jpg" class="img-fluid rounded z-depth-1" zoomable=true %}
-    </div>
-</div>
-<div class="caption">
-    Unreal Lightmass. Source: <a href="https://dev.epicgames.com/documentation/unreal-engine/lightmass-basics-in-unreal-engine">Epic Games documentation</a>
-</div>
+![Unreal Lightmass](/assets/img/realtime-gi-survey/1.jpg)
+_Unreal Lightmass. Source: [Epic Games documentation](https://dev.epicgames.com/documentation/unreal-engine/lightmass-basics-in-unreal-engine)_
 
 The representative method of the second category is PRT (Precomputed Radiance Transfer). Depending on how data is stored, PRT can likewise be split into baking on geometric surfaces and baking into points placed in space. Surface PRT is stored as an SH transfer vector (or, depending on whether only diffuse or additionally glossy reflection is stored, as SH scaling coefficients / an SH transfer matrix). Spatial PRT is stored as an SH matrix: once the incident lighting has been converted into an SH vector, the goal is to compute a new incident lighting expression that accounts for occlusion by the various geometry in the scene. That result is still an SH vector, so an SH matrix is needed to perform the transformation in between.
 
@@ -42,14 +36,8 @@ Because the first category bakes the complete result of light transport, it need
 
 Game examples: Ghost of Tsushima (outdoors, PRT-like), The Division (PRT), Delta Force (baked probes + voxel interpolation).
 
-<div class="row mt-3">
-    <div class="col-sm mt-3 mt-md-0">
-        {% include figure.liquid loading="eager" path="assets/img/realtime-gi-survey/2.jpg" class="img-fluid rounded z-depth-1" zoomable=true %}
-    </div>
-</div>
-<div class="caption">
-    Ghost of Tsushima (outdoors). Source: <a href="https://advances.realtimerendering.com/s2021/jpatry_advances2021/index.html#/18">SIGGRAPH 2021 Advances in Real-Time Rendering</a>
-</div>
+![Ghost of Tsushima (outdoors)](/assets/img/realtime-gi-survey/2.jpg)
+_Ghost of Tsushima (outdoors). Source: [SIGGRAPH 2021 Advances in Real-Time Rendering](https://advances.realtimerendering.com/s2021/jpatry_advances2021/index.html#/18)_
 
 ## Screen-Space GI
 
@@ -57,14 +45,8 @@ The main idea of screen-space GI is to perform a linear trace or a Hi-Z/HZB trac
 
 Typical methods include SSGI (Screen-Space Global Illumination) and the Screen Trace in Lumen.
 
-<div class="row mt-3">
-    <div class="col-sm mt-3 mt-md-0">
-        {% include figure.liquid loading="eager" path="assets/img/realtime-gi-survey/3.jpg" class="img-fluid rounded z-depth-1" zoomable=true %}
-    </div>
-</div>
-<div class="caption">
-    SSGI in UE, Quality=4. Source: <a href="https://dev.epicgames.com/documentation/unreal-engine/screen-space-global-illumination?application_version=4.27">Epic Games documentation</a>
-</div>
+![SSGI in UE, Quality=4](/assets/img/realtime-gi-survey/3.jpg)
+_SSGI in UE, Quality=4. Source: [Epic Games documentation](https://dev.epicgames.com/documentation/unreal-engine/screen-space-global-illumination?application_version=4.27)_
 
 ## Dynamic Spatial Lighting Cache GI
 
@@ -102,14 +84,8 @@ The ray-hit data in DDGI is sometimes referred to as "surfels", but those are no
 
 Original DDGI paper: [https://jcgt.org/published/0008/02/01/](https://jcgt.org/published/0008/02/01/)
 
-<div class="row mt-3">
-    <div class="col-sm mt-3 mt-md-0">
-        {% include figure.liquid loading="eager" path="assets/img/realtime-gi-survey/4.jpg" class="img-fluid rounded z-depth-1" zoomable=true %}
-    </div>
-</div>
-<div class="caption">
-    DDGI. Source: <a href="https://morgan3d.github.io/articles/2019-04-01-ddgi/">Morgan McGuire's blog</a>
-</div>
+![DDGI](/assets/img/realtime-gi-survey/4.jpg)
+_DDGI. Source: [Morgan McGuire's blog](https://morgan3d.github.io/articles/2019-04-01-ddgi/)_
 
 **World-Space Probe + Irradiance + hybrid Per-Pixel Raytrace Gather and World-Space Probe Gather (complete solution):**
 
@@ -122,14 +98,8 @@ The pipeline is:
 3. Also query and blend the 8 surrounding world-space irradiance probes.
 4. Return the result and accumulate it as SH at the first hit, then upsample it to obtain the final shading value.
 
-<div class="row mt-3">
-    <div class="col-sm mt-3 mt-md-0">
-        {% include figure.liquid loading="eager" path="assets/img/realtime-gi-survey/5.jpg" class="img-fluid rounded z-depth-1" zoomable=true %}
-    </div>
-</div>
-<div class="caption">
-    Assassin's Creed Shadows. Source: <a href="https://advances.realtimerendering.com/s2025/content/Advances%202025%20-%20Raytracing%20the%20world%20of%20Assassin%27s%20Creed%20Shadows.pdf">SIGGRAPH 2025 Advances in Real-Time Rendering</a>
-</div>
+![Assassin's Creed Shadows](/assets/img/realtime-gi-survey/5.jpg)
+_Assassin's Creed Shadows. Source: [SIGGRAPH 2025 Advances in Real-Time Rendering](https://advances.realtimerendering.com/s2025/content/Advances%202025%20-%20Raytracing%20the%20world%20of%20Assassin%27s%20Creed%20Shadows.pdf)_
 
 **World-Space Probe + Radiance (caching scheme):**
 
@@ -170,14 +140,8 @@ Combining the three schemes above yields an approximate outline of the Lumen pip
 
 In effect, Lumen is a multi-level cache hierarchy: the Surface Atlas is one level, the world-space probes are another, and only at the screen-space probe level is the data used for shading. The remaining task is to handle the conversion between cache levels.
 
-<div class="row mt-3">
-    <div class="col-sm mt-3 mt-md-0">
-        {% include figure.liquid loading="eager" path="assets/img/realtime-gi-survey/6.jpg" class="img-fluid rounded z-depth-1" zoomable=true %}
-    </div>
-</div>
-<div class="caption">
-    Lumen. Source: <a href="https://dev.epicgames.com/documentation/unreal-engine/lumen-global-illumination-and-reflections-in-unreal-engine">Epic Games documentation</a>
-</div>
+![Lumen](/assets/img/realtime-gi-survey/6.jpg)
+_Lumen. Source: [Epic Games documentation](https://dev.epicgames.com/documentation/unreal-engine/lumen-global-illumination-and-reflections-in-unreal-engine)_
 
 **Surfel + Irradiance + Surfel Neighborhood Gather (complete solution):**
 
@@ -195,14 +159,8 @@ The representative method is GIBS (Surfel GI). Its pipeline can be roughly descr
 
 Game examples: EA Sports College Football 25, Love and Deepspace (a surfel GI, but not EA's GIBS).
 
-<div class="row mt-3">
-    <div class="col-sm mt-3 mt-md-0">
-        {% include figure.liquid loading="eager" path="assets/img/realtime-gi-survey/7.jpg" class="img-fluid rounded z-depth-1" zoomable=true %}
-    </div>
-</div>
-<div class="caption">
-    GIBS. Source: <a href="https://advances.realtimerendering.com/s2024/content/EA-GIBS2/Apers_Advances-s2024_Shipping-Dynamic-GI.pdf">SIGGRAPH 2024 Advances in Real-Time Rendering</a>
-</div>
+![GIBS](/assets/img/realtime-gi-survey/7.jpg)
+_GIBS. Source: [SIGGRAPH 2024 Advances in Real-Time Rendering](https://advances.realtimerendering.com/s2024/content/EA-GIBS2/Apers_Advances-s2024_Shipping-Dynamic-GI.pdf)_
 
 **As these examples show, every so-called GI technique, whether a single scheme or a hybrid, is essentially a combination along the three axes above. Consequently, any GI technique, regardless of its apparent complexity, can be systematically decomposed along these three axes.**
 
@@ -222,23 +180,11 @@ Among these, ReSTIR and RTGI are the most common today. ReSTIR provides a better
 
 Game examples: Cyberpunk 2077 (ReSTIR), Indiana Jones and the Great Circle (RTGI).
 
-<div class="row mt-3">
-    <div class="col-sm mt-3 mt-md-0">
-        {% include figure.liquid loading="eager" path="assets/img/realtime-gi-survey/8.jpg" class="img-fluid rounded z-depth-1" zoomable=true %}
-    </div>
-</div>
-<div class="caption">
-    Cyberpunk 2077. Source: <a href="https://intro-to-restir.cwyman.org/presentations/2023ReSTIR_Course_Cyberpunk_2077_Integration.pdf">SIGGRAPH 2023 ReSTIR Course</a>
-</div>
+![Cyberpunk 2077](/assets/img/realtime-gi-survey/8.jpg)
+_Cyberpunk 2077. Source: [SIGGRAPH 2023 ReSTIR Course](https://intro-to-restir.cwyman.org/presentations/2023ReSTIR_Course_Cyberpunk_2077_Integration.pdf)_
 
-<div class="row mt-3">
-    <div class="col-sm mt-3 mt-md-0">
-        {% include figure.liquid loading="eager" path="assets/img/realtime-gi-survey/9.jpg" class="img-fluid rounded z-depth-1" zoomable=true %}
-    </div>
-</div>
-<div class="caption">
-    Indiana Jones and the Great Circle. Source: <a href="https://www.nvidia.com/en-sg/geforce/news/dlss-full-ray-tracing-indiana-jones-and-the-great-circle/">NVIDIA</a>
-</div>
+![Indiana Jones and the Great Circle](/assets/img/realtime-gi-survey/9.jpg)
+_Indiana Jones and the Great Circle. Source: [NVIDIA](https://www.nvidia.com/en-sg/geforce/news/dlss-full-ray-tracing-indiana-jones-and-the-great-circle/)_
 
 ---
 

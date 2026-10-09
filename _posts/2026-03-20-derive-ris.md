@@ -1,10 +1,10 @@
 ---
-layout: post
 title: Derive RIS from scratch
 date: 2026-03-20 17:00:00
 description: derive RIS from scratch
-tags: rendering math
-categories: rendering
+tags: [rendering, math]
+categories: [rendering]
+math: true
 ---
 
 This post starts from the simplest possible integral and works toward the core idea behind RIS. The goal is to show, in a rough but direct way, how you might derive the RIS used in ReSTIR from scratch. By the time we reach the final form, the familiar RIS sampling procedure also falls out naturally.
