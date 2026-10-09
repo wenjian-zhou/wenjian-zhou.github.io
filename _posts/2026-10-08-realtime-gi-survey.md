@@ -9,15 +9,13 @@ categories: rendering
 
 ## Introduction
 
-I have recently been reading a lot of GI-related material and papers, and along the way I couldn't help feeling that the landscape of GI techniques is rather messy. "Hybrid solutions" keep popping up one after another, and keeping track of them is a real headache. So, in the spirit of making complicated things as simple as possible, this post summarizes the GI techniques commonly used in real-time rendering today, together with examples of games that use them.
+I have recently been reading a lot of GI-related material and papers, and it became apparent that the landscape of GI techniques is rather fragmented. New "hybrid solutions" continue to emerge, making the field difficult to follow. So, with the aim of presenting a complex topic as clearly as possible, this post summarizes the GI techniques commonly used in real-time rendering today, together with examples of games that use them.
 
-What sets this post apart from the usual GI primers is that, in the section on dynamic spatial lighting cache GI, I treat the **cache structure**, the **cached radiometric quantity**, and the **Final Gather method** as three parallel axes and combine them. Hybrid solutions such as DDGI, Surfel GI and Lumen all fall out of these combinations.
+Unlike typical introductory articles on GI, this post, in the section on dynamic spatial lighting cache GI, treats the **cache structure**, the **cached radiometric quantity**, and the **Final Gather method** as three parallel axes and combine them. Hybrid solutions such as DDGI, Surfel GI and Lumen can all be derived from these combinations.
 
-For the papers behind specific GI techniques, or the GDC / SIGGRAPH Advances talks from game studios, you can use AI tools to help you collect and read them. This post will not go into the details of any individual technique.
+For the papers behind specific GI techniques, or the GDC / SIGGRAPH Advances talks from game studios, readers may use AI-assisted tools to locate and review them. This post will not go into the details of any individual technique.
 
 Note that this post only covers techniques for **diffuse** GI. I plan to write a separate post on GI light-leaking prevention in the future.
-
-2026/08/07 Update: after a discussion with a friend, I added Final Gather as an additional classification axis for dynamic spatial lighting cache GI. This class of GI is now described as a combination of "cache structure", "cached quantity" and "Final Gather method".
 
 ## Precomputed / Baked GI
 
@@ -27,7 +25,7 @@ Based on what is cached, these approaches fall into two categories: **the result
 
 Each category in turn has two storage options: **baking onto surfaces, and baking into points placed in world space**.
 
-Representative methods of the first category are the Lightmap (baked on surfaces) and the Volumetric Lightmap (baked into points placed in world space). The points-in-space approach usually stores an SH vector at each point and interpolates samples at runtime, which is equivalent to storing an expression of the lighting at a given point in space. This pattern of storing sample points in space is sometimes called an Irradiance Volume, or Probes; everyone has their own name for it, but in essence it is just placing points in space. How exactly those points are placed (manually by artists / automatically / with an octree) is a matter of preference.
+Representative methods of the first category are the Lightmap (baked on surfaces) and the Volumetric Lightmap (baked into points placed in world space). The points-in-space approach usually stores an SH vector at each point and interpolates samples at runtime, which is equivalent to storing an expression of the lighting at a given point in space. This pattern of storing sample points in space is sometimes called an Irradiance Volume, or Probes; naming conventions vary, but the underlying idea is the same: sample points distributed in space. How exactly those points are placed (manually by artists / automatically / with an octree) is an implementation choice.
 
 <div class="row mt-3">
     <div class="col-sm mt-3 mt-md-0">
@@ -38,9 +36,9 @@ Representative methods of the first category are the Lightmap (baked on surfaces
     Unreal Lightmass. Source: <a href="https://dev.epicgames.com/documentation/unreal-engine/lightmass-basics-in-unreal-engine">Epic Games documentation</a>
 </div>
 
-The representative method of the second category is PRT (Precomputed Radiance Transfer). Depending on how data is stored, PRT can likewise be split into baking on geometric surfaces and baking into points placed in space. Surface PRT is stored as an SH transfer vector (or, depending on whether you store only diffuse or additionally glossy reflection, as SH scaling coefficients / an SH transfer matrix). Spatial PRT is stored as an SH matrix: once the incident lighting has been converted into an SH vector, the goal is to compute a new incident lighting expression that accounts for occlusion by the various geometry in the scene. That result is still an SH vector, so an SH matrix is needed to perform the transformation in between.
+The representative method of the second category is PRT (Precomputed Radiance Transfer). Depending on how data is stored, PRT can likewise be split into baking on geometric surfaces and baking into points placed in space. Surface PRT is stored as an SH transfer vector (or, depending on whether only diffuse or additionally glossy reflection is stored, as SH scaling coefficients / an SH transfer matrix). Spatial PRT is stored as an SH matrix: once the incident lighting has been converted into an SH vector, the goal is to compute a new incident lighting expression that accounts for occlusion by the various geometry in the scene. That result is still an SH vector, so an SH matrix is needed to perform the transformation in between.
 
-Because the first category bakes the complete result of light transport, it needs multiple sets of baked data to handle time of day (TOD), dynamic weather, and so on. The second category only bakes the light transport process, so it can accept many different lighting conditions with a single set of baked data. However, for interiors, where direct sunlight and skylight contribute relatively little and local lights such as point and spot lights dominate, you may need to fall back to the first category and bake a separate Lightmap or Volumetric Lightmap. For example, in Ghost of Yōtei, the open world uses a PRT-like approach, while artists can draw boxes around interiors and other important areas; those boxed regions are subdivided with an octree, probes are generated, and then baked.
+Because the first category bakes the complete result of light transport, it needs multiple sets of baked data to handle time of day (TOD), dynamic weather, and so on. The second category only bakes the light transport process, so it can support a variety of lighting conditions with a single set of baked data. However, for interiors, where direct sunlight and skylight contribute relatively little and local lights such as point and spot lights dominate, it may be necessary to fall back to the first category and bake a separate Lightmap or Volumetric Lightmap. For example, in Ghost of Yōtei, the open world uses a PRT-like approach, while artists can define bounding volumes around interiors and other important areas; these regions are subdivided with an octree, probes are generated, and then baked.
 
 Game examples: Ghost of Tsushima (outdoors, PRT-like), The Division (PRT), Delta Force (baked probes + voxel interpolation).
 
@@ -70,9 +68,9 @@ Typical methods include SSGI (Screen-Space Global Illumination) and the Screen T
 
 ## Dynamic Spatial Lighting Cache GI
 
-What dynamic spatial lighting cache GI is really trying to do is update lighting in real time while the game runs, store that lighting in some kind of spatial cache, and then reuse the cache for GI shading.
+The goal of dynamic spatial lighting cache GI is to update lighting in real time while the game runs, store that lighting in some kind of spatial cache, and then reuse the cache for GI shading.
 
-How the cache is laid out in space, which radiometric quantity it stores, and how the Final Gather is done give us roughly **three independent classification axes**:
+How the cache is laid out in space, which radiometric quantity it stores, and how the Final Gather is done yield **three largely independent classification axes**:
 
 - **How the cache is laid out in space**: World-Space Probes, Screen-Space Probes, Surfels, Surface Atlas, Voxels, etc.
 - **Which radiometric quantity is stored**: Radiance, Irradiance, etc.
@@ -83,9 +81,9 @@ How the cache is laid out in space, which radiometric quantity it stores, and ho
   - Per-Pixel Raytrace Gather (full / half / quarter res): shoot rays per pixel, hit the surface cache, and read the lighting stored there.
   - And hybrid Final Gather schemes.
 
-**Final Gather can be understood as a mapping from the spatial cache to pixels. If you think of the current frame's spatial cache as a set, then the act of shading a pixel can be abstracted as accumulating elements of that set onto the pixel with different weights (i.e. different Final Gather methods).**
+**Final Gather can be understood as a mapping from the spatial cache to pixels. If the current frame's spatial cache is viewed as a set, then the act of shading a pixel can be abstracted as accumulating elements of that set onto the pixel with different weights (i.e. different Final Gather methods).**
 
-By combining these three axes, **you get a whole family of GI algorithms**. This is exactly where all the so-called "hybrid solutions" come from: they are really just combinations along these three axes. The first two axes combine to give various caching schemes, while the third axis serves as an independent scheme for the final per-pixel shading.
+Combining these three axes **yields a wide range of GI algorithms**. This is the origin of the so-called "hybrid solutions", which are essentially combinations along these three axes. The first two axes combine to give various caching schemes, while the third axis serves as an independent scheme for the final per-pixel shading.
 
 Below are some concrete examples.
 
@@ -137,7 +135,7 @@ The pipeline is:
 
 The representative method is the world-space probes in Lumen. In Lumen, world-space probes are distributed in clipmaps over world space and store directional radiance $$L_i(x, \omega)$$.
 
-They have low spatial density but high directional density, so when you use them you can re-integrate against the BRDF, e.g. for metallic reflections within a certain roughness range. Lumen also uses them to supply distant lighting.
+They have low spatial density but high directional density, which allows them to be re-integrated against the BRDF, e.g. for metallic reflections within a certain roughness range. Lumen also uses them to supply distant lighting.
 
 **Screen-Space Probe + Radiance + Screen Probe Gather (complete solution):**
 
@@ -147,12 +145,12 @@ The representative method is Lumen's Screen Probe Gather. The main steps are:
 2. Shoot rays in multiple directions from each probe.
 3. Query radiance via Screen Trace, SDF, or hardware RT.
 4. When a ray misses, look up distant radiance from the world-space radiance cache.
-5. Filtering and temporal reprojection.
+5. Apply filtering and temporal reprojection.
 6. Interpolate probe radiance to pixels and perform the integration.
 
 **Surface Atlas + Irradiance (caching scheme):**
 
-The representative method is Lumen's Surface Cache, although the Surface Cache stores more than just irradiance. Lumen calls the way it updates indirect lighting in the Surface Cache "Surface Cache Radiosity". However, the algorithm involves neither the form-factor matrix for light transport between surface patches nor the hemicube from traditional radiosity, so be careful not to confuse it with classic radiosity.
+The representative method is Lumen's Surface Cache, although the Surface Cache stores more than just irradiance. Lumen calls the way it updates indirect lighting in the Surface Cache "Surface Cache Radiosity". However, the algorithm involves neither the form-factor matrix for light transport between surface patches nor the hemicube from traditional radiosity, and it should therefore not be confused with classic radiosity.
 
 The main steps are:
 
@@ -162,7 +160,7 @@ The main steps are:
 4. Project the radiance onto SH to complete the integral of the rendering equation, yielding irradiance, which is written into the indirect lighting atlas.
 5. After accumulation, regenerate the final lighting atlas.
 
-Combining the three schemes above gives you roughly the Lumen pipeline:
+Combining the three schemes above yields an approximate outline of the Lumen pipeline:
 
 1. Surface Atlas + Irradiance produces the final lighting atlas, which serves as a cache.
 2. World-Space Probe + Radiance gathers lighting from the Surface Atlas, acting as a sparse cache and as the fallback for screen probes.
@@ -170,7 +168,7 @@ Combining the three schemes above gives you roughly the Lumen pipeline:
 
 **UE 5.8 adds two new Final Gather schemes, which essentially amount to adding a World-Space Probe Gather and a Per-Pixel Raytrace Gather, where the Per-Pixel Raytrace Gather uses ReSTIR.**
 
-In effect, Lumen is a multi-level cache hierarchy: the Surface Atlas is one level, the world-space probes are another, and only at the screen-space probe level is the data used for shading. All that needs to be handled is the conversion between the cache levels.
+In effect, Lumen is a multi-level cache hierarchy: the Surface Atlas is one level, the world-space probes are another, and only at the screen-space probe level is the data used for shading. The remaining task is to handle the conversion between cache levels.
 
 <div class="row mt-3">
     <div class="col-sm mt-3 mt-md-0">
@@ -206,21 +204,21 @@ Game examples: EA Sports College Football 25, Love and Deepspace (a surfel GI, b
     GIBS. Source: <a href="https://advances.realtimerendering.com/s2024/content/EA-GIBS2/Apers_Advances-s2024_Shipping-Dynamic-GI.pdf">SIGGRAPH 2024 Advances in Real-Time Rendering</a>
 </div>
 
-**As these examples show, every so-called GI technique, whether a single scheme or a hybrid, is essentially a combination along the three axes above. From now on, no matter how complex or hard to understand a GI technique looks, as long as you analyze it along these three axes, you can take it apart piece by piece.**
+**As these examples show, every so-called GI technique, whether a single scheme or a hybrid, is essentially a combination along the three axes above. Consequently, any GI technique, regardless of its apparent complexity, can be systematically decomposed along these three axes.**
 
 ## Voxel / SDF / Sparse Voxel GI
 
-This post doesn't go into these in depth, so I'll only touch on them briefly.
+These methods are beyond the scope of this post and are only briefly outlined here.
 
 Voxel-based GI discretizes the scene's geometry, materials and other information into a 3D voxel grid or a sparse voxel structure, then injects lighting as radiance and performs voxel ray tracing or cone tracing at runtime.
 
-SDFs mainly provide visibility and hit queries and don't necessarily store lighting themselves. Used well, an SDF lets you skip over empty space.
+SDFs mainly provide visibility and hit queries and do not necessarily store lighting. When used effectively, they allow empty space to be skipped efficiently.
 
 ## Hardware Ray Tracing and Sample-Reuse GI
 
-Hardware ray tracing is, first and foremost, just a backend for ray intersection, e.g. DXR, or Vulkan 1.3 + `VK_KHR_acceleration_structure`. On top of it you can implement many GI algorithms: RTGI, DDGI probe updates, radiance caches, path tracing, ReSTIR, and so on.
+Hardware ray tracing is primarily a backend for ray intersection, e.g. DXR, or Vulkan 1.3 + `VK_KHR_acceleration_structure`. A variety of GI algorithms can be built on top of it: RTGI, DDGI probe updates, radiance caches, path tracing, ReSTIR, and so on.
 
-Among these, ReSTIR and RTGI are the most common today. ReSTIR provides a better PDF while also accumulating a larger effective sample count, but it has some issues, such as color noise and disocclusion (some recent papers attempt to address these). ReSTIR also doesn't play very well with DLSS-RR (Ray Reconstruction): DLSS-RR expects i.i.d. samples as input, but the samples ReSTIR produces are temporally correlated, which leads to "boiling" artifacts. In practice you can use other denoisers such as NRD instead.
+Among these, ReSTIR and RTGI are the most common today. ReSTIR provides a better PDF while also accumulating a larger effective sample count, but it has some issues, such as color noise and disocclusion (some recent papers attempt to address these). ReSTIR also does not integrate well with DLSS-RR (Ray Reconstruction): DLSS-RR expects i.i.d. samples as input, but the samples ReSTIR produces are temporally correlated, which leads to "boiling" artifacts. In practice, alternative denoisers such as NRD can be used instead.
 
 Game examples: Cyberpunk 2077 (ReSTIR), Indiana Jones and the Great Circle (RTGI).
 
